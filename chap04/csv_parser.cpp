@@ -34,8 +34,8 @@ std::vector<std::vector<double>> parse_csv_file(std::string input_file_name) {
                 try {
                     record.push_back(stof(line));
                 }                catch (const std::invalid_argument e) {
-                    std::cout << "NaN found in file " << inputFileName << " line " << l
-                            << endl;
+                    std::cout << "NaN found in file " << input_file_name << " line " << l
+                            << std::endl;
                     e.what();
                 }
             }
@@ -45,15 +45,15 @@ std::vector<std::vector<double>> parse_csv_file(std::string input_file_name) {
     }
 
     if (!inputFile.eof()) {
-        std::cerr << "Could not read file " << inputFileName << "\n";
-        __throw_invalid_argument("File not found.");
+        std::cerr << "Could not read file " << input_file_name << "\n";
+        std::__throw_invalid_argument("File not found.");
     }
 
     return data;
 }
 
 int main() {
-    std::vector<vector<double>> data = parse_csv_file("test.csv");
+    std::vector<std::vector<double>> data = parse_csv_file("test.csv");
 
     for (auto l : data) {
         for (auto x : l)
