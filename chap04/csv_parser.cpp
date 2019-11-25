@@ -21,7 +21,7 @@ std::vector<std::vector<double>> parse_csv_file(std::string input_file_name) {
         l++;
         std::string s;
 
-        if (!getline(inputFile, s)) break;
+        if (!std::getline(inputFile, s)) break;
 
         if (s[0] != '#') {
             std::istringstream ss(s);

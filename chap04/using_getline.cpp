@@ -14,7 +14,7 @@ void read_line_by_line(std::string& line) {
 }
 
 void read_line(std::string& line) {
-    while (std::getline(std::cin, line)) {
+    while (std::getline(std::cin, line, '\n')) {
         std::cout << line << std::endl;
     }
 }
@@ -32,7 +32,7 @@ void read_word(std::string& word) {
 
 int main() {
     std::string line;
-    read_word(line);
+    read_line(line);
     return 0;
 }
 
