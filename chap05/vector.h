@@ -9,5 +9,4 @@ public:
     ~Vector();
     double& operator[](int);
     int size() const;
-    void print() const;
 };

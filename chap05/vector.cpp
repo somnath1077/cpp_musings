@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "vector.h"
 
-Vector::Vector(int s) {
+Vector::Vector(int s)  {
     std::cout << "Constructor of Vector" << std::endl;
     if (s < 0) throw std::out_of_range("Index less than 0");
     
@@ -30,8 +30,3 @@ double& Vector::operator[](int s) {
 int Vector::size() const {
     return sz;
 }
-
-void Vector::print() const {
-    for (int i = 0; i < sz; ++i) std::cout << elem[i] << std::endl;
-}
-
