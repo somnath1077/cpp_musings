@@ -22,6 +22,9 @@ Vector::~Vector() {
     delete[] elem;
 }
 
+// A copy constructor and a copy assignment for a class X are typically
+// declared to take an argument of type const X&.
+
 Vector::Vector(const Vector& a) : elem{new double[a.sz]}, sz{a.sz} {
     for (int i = 0; i < sz; ++i) {
         elem[i] = a.elem[i];
