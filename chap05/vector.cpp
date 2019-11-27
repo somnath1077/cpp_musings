@@ -28,6 +28,20 @@ Vector::Vector(const Vector& a) : elem{new double[a.sz]}, sz{a.sz} {
     }
 }
 
+Vector& Vector::operator=(const Vector& a) {
+    double* p = new double[a.sz];
+    for (int i = 0; i < a.sz; ++i) {
+        p[i] = a.elem[i];
+    }
+
+    // delete the resources held by this Vector
+    delete[] elem;
+
+    elem = p;
+    sz = a.sz;
+    return *this;
+}
+
 double& Vector::operator[](int s) {
     if (s < 0 || s > sz - 1) throw std::out_of_range("Index out of bounds");
     return elem[s];

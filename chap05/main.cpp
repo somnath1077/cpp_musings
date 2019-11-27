@@ -35,10 +35,13 @@ int main() {
 
     VectorContainer v2 = {1, 2, 3, 4};
     VectorContainer v3{v2};
-    use(v2);
-    use(v3);
+    // use(v2);
+    //use(v3);
     v3[1] = 1000;
     use(v2);
     use(v3);
+
+    VectorContainer v4 = v3;
+    use(v4);
     return 0;
 }
