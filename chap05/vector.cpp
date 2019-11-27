@@ -22,9 +22,14 @@ Vector::~Vector() {
     delete[] elem;
 }
 
-// A copy constructor and a copy assignment for a class X are typically
-// declared to take an argument of type const X&.
-
+/*
+A copy constructor and a copy assignment for a class X are typically
+declared to take an argument of type const X&. This implies that the
+function itself will not be able to change the state of the object by means
+of the reference that is passed to it as parameter. In addition, it won't
+be possible to invoke member functions of the object through that reference
+which are not themselves qualified as const.
+*/
 Vector::Vector(const Vector& a) : elem{new double[a.sz]}, sz{a.sz} {
     for (int i = 0; i < sz; ++i) {
         elem[i] = a.elem[i];
