@@ -5,10 +5,10 @@
 Vector::Vector(int s)  {
     std::cout << "Constructor of Vector" << std::endl;
     if (s < 0) throw std::out_of_range("Index less than 0");
-    
+
     elem = new double[s];
     sz = s;
-    for (int i = 0; i < sz; ++i) elem[i] = 0; 
+    for (int i = 0; i < sz; ++i) elem[i] = 0;
 }
 
 Vector::Vector(std::initializer_list<double> l) {
@@ -20,6 +20,12 @@ Vector::Vector(std::initializer_list<double> l) {
 Vector::~Vector() {
     std::cout << "Destructor of Vector" << std::endl;
     delete[] elem;
+}
+
+Vector::Vector(const Vector& a) : elem{new double[a.sz]}, sz{a.sz} {
+    for (int i = 0; i < sz; ++i) {
+        elem[i] = a.elem[i];
+    }
 }
 
 double& Vector::operator[](int s) {
