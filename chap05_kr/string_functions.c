@@ -13,10 +13,13 @@
 
 int strcmp(char *s, char *t) {
 	int i = 0;
-	for (; s[i] == t[i]; i++) {
+	
+	while (s[i] == t[i]) {
 		if (s[i] == '\0') 
 			return 0;
+		i++;
 	}
+
 	return s[i] - t[i];
 }
 
@@ -116,4 +119,6 @@ int main() {
 
 	strcpy_5(s, t5);
 	printf("%s\n", s);
+
+	printf("%d\n", strcmp(t4, t5)); 
 }
