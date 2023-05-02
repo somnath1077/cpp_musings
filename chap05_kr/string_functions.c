@@ -40,6 +40,41 @@ char *my_strncpy(char *s, char *t, int n) {
 	return t;
 }
 
+char *strcpy_2(char *s, char *t) {
+	/*
+		Copies t to s
+	*/
+	int i = 0;
+	while ((s[i] = t[i]) != '\0')
+		i++;
+
+	return s;
+}
+
+char *strcpy_3(char *s, char *t) {
+	/*
+		Copies t to s
+	*/
+	char *init = s;
+
+	while ((*s++ = *t++) != '\0') 
+		;
+	
+	return init;
+}
+
+void strcpy_4(char *s, char *t) {
+	/* Copies t to s*/
+	while((*s++ = *t++) != '\0') 
+		;
+}
+
+void strcpy_5(char *s, char *t) {
+	/* Copies t to s*/
+	while(*s++ = *t++) 
+		;
+}
+
 size_t len(char *s) {
 	size_t l = 0;
 	while (s[l] != '\0') {
@@ -69,7 +104,16 @@ char *strcat(char *s, char *t) {
 
 
 int main() {
-	char s[N] = "Pat sat on a cat. ", t[N] = "That cat blew a hole in my hat.";
-	printf("%s\n", strcat(s, t));
-	printf("%s\n", my_strncpy(s, t, 7));
+	char s[N]; 
+	char t2[N] = "strcpy_2: That cat blew a hole in my hat.";
+	char t3[N] = "strcpy_3: No cat can blow a hole in my hat!!!";
+	char t4[N] = "strcpy_4: Three cats blew a hole in my hat!";
+	char t5[N] = "strcpy_5: Three cats blew a hole in my hat!";
+	printf("%s\n", strcpy_2(s, t2));
+	printf("%s\n", strcpy_3(s, t3));
+	strcpy_4(s, t4);
+	printf("%s\n", s);
+
+	strcpy_5(s, t5);
+	printf("%s\n", s);
 }
