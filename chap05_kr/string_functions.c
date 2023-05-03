@@ -106,19 +106,60 @@ char *strcat(char *s, char *t) {
 }
 
 
+int strend(char *s, char *t) {
+	/* Return 1 if t occurs at the end of s; otherwise returns 0*/
+	char *s_ptr = s, *t_ptr = t;
+
+	while (*s_ptr != '\0')
+		s_ptr++;
+	
+	while (*t_ptr != '\0')
+		t_ptr++;
+	
+
+	while (t_ptr != t && s_ptr != s) {
+		if (*t_ptr != *s_ptr)
+			return 0;
+		t_ptr--;
+		s_ptr--;
+	}
+	/* If we exhausted s but not t: t cannot be at the end of s*/
+	if (s_ptr == s && t_ptr != t)
+		return 0;
+	/*
+		If we haven't exhausted s, then it must be that we exhausted t 
+		(for otherwise, we would not drop out of the last while loop).
+		In this case, we check if the first character of t matches the
+		corresponding character of s. 
+		Similarly, if we have exhausted both s and t, we must do the same set 
+		of checks. 
+	*/
+	if (s_ptr != s || (s_ptr == s && t_ptr == t)) {
+		if (*t_ptr == *s_ptr)
+			return 1;
+		else
+			return 0;
+	}
+}
+
+
 int main() {
 	char s[N]; 
 	char t2[N] = "strcpy_2: That cat blew a hole in my hat.";
 	char t3[N] = "strcpy_3: No cat can blow a hole in my hat!!!";
 	char t4[N] = "strcpy_4: Three cats blew a hole in my hat!";
 	char t5[N] = "strcpy_5: Three cats blew a hole in my hat!";
-	printf("%s\n", strcpy_2(s, t2));
-	printf("%s\n", strcpy_3(s, t3));
-	strcpy_4(s, t4);
-	printf("%s\n", s);
+	char a[] = "This is a hat";
+	char b[] = "ThisThis is a hat";
+	// printf("%s\n", strcpy_2(s, t2));
+	// printf("%s\n", strcpy_3(s, t3));
+	// strcpy_4(s, t4);
+	// printf("%s\n", s);
 
-	strcpy_5(s, t5);
-	printf("%s\n", s);
+	// strcpy_5(s, t5);
+	// printf("%s\n", s);
 
-	printf("%d\n", strcmp(t4, t5)); 
+	// printf("%d\n", strcmp(t4, t5));
+
+	printf("%d\n", strend(a, b)); 
 }
